@@ -17,9 +17,9 @@
 # Run instruction
 ## if your KEYWORD in optional list: 
 ## [beauty, wallpaper, design#/, funny, news, art, car, photography, food, home, pet]
-    * -> choose the way u want to save them(settings.py -> ItemPipeline)
-    * -> change the KEYWORD in settings.py
+    * -> choose the item middleware u want to save them(settings.py -> ItemPipeline)  
+    * -> change the KEYWORD in settings.py  
     * -> just run "scrapy crawl images" command in terminal
 ## otherwise
-    *  -> same with given keywords at the fisrt 2 steps 
+    * -> same with given keywords at the fisrt 2 steps  
     * -> run "scray crawl search_images" command in terminal
