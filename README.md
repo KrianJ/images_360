@@ -10,5 +10,15 @@ A image spider on https://image.so.com/
     Besides, if u wanna to store the pics locally, u can uncomment the ITEMPIPELINE SETTINGS "'images_360.pipelines.ImagePipeline': 299,'" in settings.py and remember choose the save path by retype the attribute "IMAGES_STORE" in settings.py either.
 
 
-all_site crawler need to be done, so there is nothing to add more.
-add later...
+# spiders/search_images.py
+1. acheieve a free search way of crawl the pics on this site
+2. similar structure with images.py, but ConnectionError occurs more, proxies need to be added in this spider middleware.
+
+# Run instruction
+if your KEYWORD in optional list: [beauty, wallpaper, design#/, funny, news, art, car, photography, food, home, pet]
+    -> choose the way u want to save them(settings.py -> ItemPipeline)
+    -> change the KEYWORD in settings.py
+    -> just run "scrapy crawl images" command in terminal
+otherwise
+    -> same with given keywords at the fisrt 2 steps 
+    -> run "scray crawl search_images" command in terminal
