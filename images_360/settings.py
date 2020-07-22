@@ -50,9 +50,9 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'images_360.middlewares.Images360DownloaderMiddleware': 543,
-#}
+# DOWNLOADER_MIDDLEWARES = {
+#    # 'images_360.middlewares.Images360DownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -65,8 +65,8 @@ ROBOTSTXT_OBEY = False
 # 优先调用下载图片的pipeline，下载失败的会被Drop，不会影响到后面的数据库存储
 ITEM_PIPELINES = {
     'images_360.pipelines.ImagePipeline': 299,
-    # 'images_360.pipelines.MongoPipeline': 300,
-    'images_360.pipelines.MysqlPipeline': 301,
+    'images_360.pipelines.MongoPipeline': 300,
+    # 'images_360.pipelines.MysqlPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -99,5 +99,11 @@ MYSQL_DATABASE = 'image_360'
 MYSQL_USER = 'root'
 MYSQL_PASSWORD = '19961014'
 MYSQL_PORT = 3306
-# Image Store
-IMAGES_STORE = './images/beauty'
+
+# if KEYWORD IN [beauty, wallpaper, design#/, funny, news, art, car, photography, food, home, pet]
+#   -> run scrapy crawl images
+# else
+#   -> run scrapy crawl search_images
+KEYWORD = 'art'        # 搜索关键字
+IMAGES_STORE = './images/%s' % KEYWORD
+

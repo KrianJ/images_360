@@ -5,6 +5,7 @@
 
 from scrapy import Item
 from scrapy import Field
+from images_360.settings import KEYWORD
 
 
 class ImageItem(Item):
@@ -15,3 +16,12 @@ class ImageItem(Item):
     image = Field()         # 全图
     thumb_img = Field()     # 缩略图
     tags = Field()          # 图片标签
+
+
+class SearchItem(Item):
+    collection = table = KEYWORD
+    id = Field()
+    title = Field()
+    image = Field()
+    thumb_img = Field()
+    img_type = Field()

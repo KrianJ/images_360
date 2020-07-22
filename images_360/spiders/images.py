@@ -3,6 +3,7 @@ from scrapy import Request
 from urllib.parse import urlencode
 import json
 from images_360.items import ImageItem
+from images_360.settings import KEYWORD
 
 
 class ImagesSpider(scrapy.Spider):
@@ -17,7 +18,7 @@ class ImagesSpider(scrapy.Spider):
         """定义爬取列表"""
         # optional words of key 'ch': [beauty, wallpaper, design#/, funny, news, art, car, photography, food, home, pet]
         data = {
-            'ch': 'beauty',
+            'ch': KEYWORD,
             'listtype': 'new',
             'temp': 1
         }
