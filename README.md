@@ -11,8 +11,8 @@
 
 
 # spiders/search_images.py
-* 1. Acheieve a free search way of crawling the pics on this site
-* 2. Similar structure with images.py, but ConnectionError occurs more, proxies need to be added in this spider middleware.
+*  Acheieve a free search way of crawling the pics on this site
+*  Similar structure with images.py, but ConnectionError occurs more, proxies need to be added in this spider middleware.
 
 # Run instruction
 ## if your KEYWORD in optional list: 
