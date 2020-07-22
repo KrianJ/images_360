@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
     'images_360.pipelines.ImagePipeline': 299,
     # 'images_360.pipelines.MongoPipeline': 300,
-    # 'images_360.pipelines.MysqlPipeline': 301,
+    'images_360.pipelines.MysqlPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -100,4 +100,4 @@ MYSQL_USER = 'root'
 MYSQL_PASSWORD = '19961014'
 MYSQL_PORT = 3306
 # Image Store
-IMAGES_STORE = './images'
+IMAGES_STORE = './images/beauty'

@@ -15,8 +15,9 @@ class ImagesSpider(scrapy.Spider):
 
     def start_requests(self):
         """定义爬取列表"""
+        # optional words of key 'ch': [beauty, wallpaper, design#/, funny, news, art, car, photography, food, home, pet]
         data = {
-            'ch': 'car',
+            'ch': 'beauty',
             'listtype': 'new',
             'temp': 1
         }
