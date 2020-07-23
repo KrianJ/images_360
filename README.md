@@ -23,3 +23,11 @@
 ## otherwise
     * -> same with given keywords at the fisrt 2 steps  
     * -> run "scray crawl search_images" command in terminal
+
+
+# ProxyPool settings
+    * The proxypool used in this proect run locally at port 5555, modify it in settings.py if proxypool changed and rewrite the ProxyMiddleware class in middleware.py if necessary. 
+## middleware.py:
+    * Add class ProxyMiddleware here for attaching a proxy to the request u send.
+## settings.py:
+    * ProxyMiddleware belongs to DownloadMiddleware, so add the class in DownloadMiddleware dict.
