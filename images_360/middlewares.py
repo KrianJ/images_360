@@ -7,6 +7,8 @@ from scrapy import signals
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
+import logging
+import requests
 
 
 class Images360SpiderMiddleware:
@@ -101,3 +103,35 @@ class Images360DownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class ProxyMiddleware:
+    def __init__(self, proxy_url):
+        self.logger = logging.getLogger(__name__)
+        self.proxy_url = proxy_url
+
+    def get_random_proxy(self):
+        try:
+            response = requests.get(self.proxy_url)
+            if response.status_code == 200:
+                proxy = response.text
+                return proxy
+        except requests.ConnectionError:
+            return False
+
+    def process_request(self, request, spider):
+        # 第一次请求失败才会请求代理
+        if request.meta.get('retry_times'):
+            proxy = self.get_random_proxy()
+            if proxy:
+                uri = 'http://%s' % proxy
+                self.logger.debug('加入代理' + proxy)
+                request.meta['proxy'] = uri
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        settings = crawler.settings
+        return cls(
+            proxy_url=crawler.settings.get('PROXY_URL')
+        )
+

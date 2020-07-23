@@ -50,9 +50,10 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    # 'images_360.middlewares.Images360DownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+   # 'images_360.middlewares.Images360DownloaderMiddleware': 543,
+    'images_360.middlewares.ProxyMiddleware': 297,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -104,6 +105,8 @@ MYSQL_PORT = 3306
 #   -> run scrapy crawl images
 # else
 #   -> run scrapy crawl search_images
-KEYWORD = 'art'        # 搜索关键字
+KEYWORD = '火影'        # 搜索关键字
 IMAGES_STORE = './images/%s' % KEYWORD
 
+# 代理池地址
+PROXY_URL = 'http://localhost:5555/random'

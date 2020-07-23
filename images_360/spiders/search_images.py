@@ -18,18 +18,23 @@ class SearchImagesSpider(scrapy.Spider):
         data = {
             'q': KEYWORD,
             'pd': 1,
+            'pn': 60,
             'correct': KEYWORD,
-            'sid': '20356d98549ff58fd4e7c9a804edd5a2',
-            'pc': 60    # 该data字段控制该请求包含的图片数量(list长度)
+            'adstart': 0,
+            'tab': 'all',
+            'ras': 6,
+            'cn': 0,
+            'gn': 0,
+            'kn': 50,
+            'crn': 0,
+            'cuben': 0,
+            'src': 'srp'
         }
-        total = 1500
         for i in range(10):
-            start_index = i * 60
-            if start_index <= 1440:
-                data['ps'] = i * 60             # 该字段控制请求中图片的开始索引为多少
-            elif 1440 < start_index <= total:
-                data['ps'] = start_index
-                data['pc'] = 1500 - start_index
+            data_control = i * 60
+            data['sn'] = data_control             # 该data字段控制该请求包含的图片数量(list长度)
+            data['ps'] = data_control             # 该字段控制请求中图片的开始索引为多少
+            data['pc'] = data_control
             query = urlencode(data)
             url = self.base_url + query
             yield Request(url=url, callback=self.parse)
